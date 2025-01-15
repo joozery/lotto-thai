@@ -1,0 +1,103 @@
+.lotto-form {
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .lotto-image {
+    width: 400px;
+    height: 600px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .upload-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .upload-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+  }
+  
+  .input-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .number-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .number-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .number-grid input {
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .save-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .save-btn:hover {
+    background-color: #0056b3;
+  }
+  
