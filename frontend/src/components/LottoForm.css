@@ -1,106 +1,110 @@
-.lotto-form {
+/* การตั้งค่าทั่วไป */
+body {
   font-family: 'Prompt', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* การตั้งค่าหลักของ LottoForm */
+.lotto-form {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  margin: 20px;
 }
 
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-  flex-wrap: wrap; /* ปรับให้เลย์เอาต์รองรับการแสดงผลในมือถือ */
+/* หัวข้อหลัก */
+.lotto-form h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #4caf50;
 }
 
-.image-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 400px;
-}
-
-.canvas-preview {
-  width: 100%; /* ปรับให้ยืดหยุ่นกับหน้าจอ */
-  max-width: 400px;
-  height: auto;
-  border: 1px solid #ccc;
-}
-
+/* ส่วนของฟอร์ม */
 .form-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 400px;
   gap: 20px;
 }
 
+/* กลุ่ม input */
 .input-group {
+  width: 100%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  gap: 5px;
 }
 
+/* ป้ายกำกับ (label) */
 .input-group label {
   font-size: 14px;
-  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
 }
 
+/* ช่องกรอกข้อมูล (input) */
 .input-group input {
   width: 100%;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.2s;
 }
 
-.number-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.input-group input:focus {
+  border-color: #4caf50;
+  outline: none;
 }
 
-.number-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* สร้าง 2 คอลัมน์ */
-  gap: 10px;
-  width: 100%;
-}
-
-.number-grid input {
-  width: 100%; /* ปรับให้ขยายตามคอลัมน์ */
-  padding: 10px;
-  font-size: 18px;
-  text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
+/* ปุ่ม */
 .save-btn {
-  background-color: #007BFF;
-  color: white;
   padding: 10px 20px;
   font-size: 16px;
+  color: white;
+  background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .save-btn:hover {
   background-color: #0056b3;
 }
 
-/* Media Queries for mobile */
-@media (max-width: 768px) {
-  .form-container {
-    flex-direction: column; /* เรียงในแนวตั้ง */
-    gap: 15px;
-  }
+/* ตัวอย่างภาพ */
+.preview-section {
+  margin-top: 20px;
+  text-align: center;
+}
 
-  .number-grid {
-    grid-template-columns: repeat(1, 1fr); /* ลดเหลือ 1 คอลัมน์ในมือถือ */
+.preview-section img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.preview-section h3 {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .lotto-form {
+    padding: 15px;
   }
 
   .save-btn {
@@ -108,7 +112,8 @@
     padding: 8px 16px;
   }
 
-  .canvas-preview {
-    max-width: 100%; /* ขยายเต็มหน้าจอ */
+  .input-group input {
+    font-size: 12px;
+    padding: 8px;
   }
 }
