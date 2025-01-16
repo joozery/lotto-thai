@@ -7,7 +7,7 @@ const LottoForm = () => {
     date: "",
     plan: "",
     set: "",
-    numbers: Array(10).fill(""), // 10 ช่องกรอกตัวเลข
+    numbers: Array(10).fill(""), // 10 ชุดตัวเลข
   });
 
   const canvasRef = useRef(null);
@@ -32,7 +32,7 @@ const LottoForm = () => {
       ctx.fillStyle = "black";
 
       // วาดข้อความสำหรับ "งวดวันที่", "แผง", และ "ชุด"
-      ctx.font = "bold 40px Prompt"; // ขนาด 50px ตัวหนา
+      ctx.font = "bold 40px Prompt";
       if (inputs.date.trim() !== "")
         ctx.fillText(` ${inputs.date}`, 210, 660);
       if (inputs.plan.trim() !== "")
@@ -41,7 +41,7 @@ const LottoForm = () => {
         ctx.fillText(` ${inputs.set}`, 895, 660);
 
       // วาดตัวเลขในช่องกรอก
-      ctx.font = "bold 70px Prompt"; // ขนาด 40px ตัวหนา
+      ctx.font = "bold 70px Prompt";
       const positions = [
         { x: 90, y: 915 },
         { x: 580, y: 915 },
@@ -65,9 +65,18 @@ const LottoForm = () => {
   };
 
   useEffect(() => {
-    // อัปเดตตัวอย่างเมื่อข้อมูลเปลี่ยนแปลง
     updateCanvasPreview();
   }, [inputs]);
+
+  // ฟังก์ชันสำหรับสุ่มตัวเลข 4 หลักไม่ซ้ำ
+  const generateRandomNumbers = () => {
+    const numbers = new Set(); // ใช้ Set เพื่อหลีกเลี่ยงตัวเลขซ้ำ
+    while (numbers.size < 10) {
+      const randomNum = Math.floor(1000 + Math.random() * 9000); // สุ่มเลข 4 หลัก (1000-9999)
+      numbers.add(randomNum);
+    }
+    setInputs({ ...inputs, numbers: Array.from(numbers).map(String) });
+  };
 
   const handleInputChange = (e, index = null) => {
     const { name, value } = e.target;
@@ -92,7 +101,7 @@ const LottoForm = () => {
 
   return (
     <div className="lotto-form">
-      <h1>ระบบกรอกตัวเลข LOTTO THAI</h1>
+      <h1>ระบบสุ่มตัวเลข LOTTO THAI</h1>
       <div className="form-container">
         <div className="image-section">
           <canvas ref={canvasRef} className="canvas-preview"></canvas>
@@ -126,17 +135,20 @@ const LottoForm = () => {
             />
           </div>
           <div className="number-section">
-            <label>กรอกตัวเลข</label>
+            <label>สุ่มตัวเลข 4 หลัก</label>
             <div className="number-grid">
               {inputs.numbers.map((num, index) => (
                 <input
                   key={index}
                   type="text"
                   value={num}
-                  onChange={(e) => handleInputChange(e, index)}
+                  readOnly // เปลี่ยนเป็น readOnly เพราะไม่ต้องให้กรอกเอง
                 />
               ))}
             </div>
+            <button className="save-btn" onClick={generateRandomNumbers}>
+              สุ่มตัวเลข
+            </button>
           </div>
           <button className="save-btn" onClick={handleSaveToImage}>
             บันทึกและดาวน์โหลดรูปภาพ
